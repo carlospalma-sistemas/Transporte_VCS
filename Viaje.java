@@ -12,7 +12,6 @@ public class Viaje
     private GregorianCalendar horaLlegada;
     private Bus bus;
     
-    private Pasajero[] pasajeros;
     private List<Pasajero> listaPasajeros;
     
     private int cantPasajeros;
@@ -31,7 +30,6 @@ public class Viaje
         this.horaLlegada = horaLlegada;
         this.cantPasajeros = cantPasajeros;
         
-        pasajeros = new Pasajero[this.cantPasajeros];
         listaPasajeros = new ArrayList<Pasajero>();
         
         this.cont = 0;
@@ -87,16 +85,6 @@ public class Viaje
         this.bus = bus;
     }
 
-    public Pasajero[] getPasajeros()
-    {
-        return this.pasajeros;
-    }
-
-    public void setPasajeros(Pasajero[] pasajeros)
-    {
-        this.pasajeros = pasajeros;
-    }
-    
     public int getCantPasajeros()
     {
         return this.cantPasajeros;
@@ -104,9 +92,6 @@ public class Viaje
     
     public void anadirPasajero(Pasajero p)
     {
-        this.pasajeros[cont] = p;
-        this.cont++;
-        
         this.listaPasajeros.add(p);
     }
     
@@ -118,16 +103,7 @@ public class Viaje
     public String presentarPasajeros()
     {
         String listado = "";
-        for (int i = 0; i<this.cont; i++)
-        {
-            listado = listado + "Pasajero #"+(i+1) + "\n" + this.pasajeros[i].toString() + "\n";
-        }
-        
-        for (int i = 0; i<this.listaPasajeros.size(); i++)
-        {
-            listado = listado + "Pasajero #"+(i+1) + "\n" + this.listaPasajeros.get(i).toString() + "\n";
-        }
-        
+ 
         int i = 0;
         for (Pasajero pas: listaPasajeros)
         {
@@ -141,15 +117,6 @@ public class Viaje
     public String buscarPasajeros(String criterio)
     {
         String listado = "";
-        for (int i = 0; i<this.cont; i++)
-        {
-            if (this.pasajeros[i].getNombre().equals(criterio) || this.pasajeros[i].getApellido().equals(criterio) || (this.pasajeros[i].getNumDocumento()+"").equals(criterio))
-            {
-                listado = listado + "Pasajero #"+(i+1) + "\n" + this.pasajeros[i].toString() + "\n";    
-            }
-        }
-        
-        
         for (Pasajero pas: listaPasajeros)
         {
             int i=0;
@@ -159,11 +126,7 @@ public class Viaje
             }
             i++;
         }
-        
         return listado;
-        
-        
-        
     }
     
     public String toString()
