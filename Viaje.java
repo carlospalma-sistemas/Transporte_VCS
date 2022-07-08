@@ -13,7 +13,6 @@ public class Viaje
     private Bus bus;
     
     private Pasajero[] pasajeros;
-    private List<Pasajero> listaPasajeros;
     
     private int cantPasajeros;
     private int cont;
@@ -32,7 +31,6 @@ public class Viaje
         this.cantPasajeros = cantPasajeros;
         
         pasajeros = new Pasajero[this.cantPasajeros];
-        listaPasajeros = new ArrayList<Pasajero>();
         
         this.cont = 0;
     }
@@ -106,8 +104,6 @@ public class Viaje
     {
         this.pasajeros[cont] = p;
         this.cont++;
-        
-        this.listaPasajeros.add(p);
     }
     
     public void setPasajeros(int cantPasajeros)
@@ -121,18 +117,6 @@ public class Viaje
         for (int i = 0; i<this.cont; i++)
         {
             listado = listado + "Pasajero #"+(i+1) + "\n" + this.pasajeros[i].toString() + "\n";
-        }
-        
-        for (int i = 0; i<this.listaPasajeros.size(); i++)
-        {
-            listado = listado + "Pasajero #"+(i+1) + "\n" + this.listaPasajeros.get(i).toString() + "\n";
-        }
-        
-        int i = 0;
-        for (Pasajero pas: listaPasajeros)
-        {
-            listado = listado + "Pasajero #"+(i+1) + "\n" + pas.toString() + "\n";
-            i++;
         }
         
         return listado;
@@ -149,21 +133,7 @@ public class Viaje
             }
         }
         
-        
-        for (Pasajero pas: listaPasajeros)
-        {
-            int i=0;
-            if (pas.getNombre().equals(criterio) || pas.getApellido().equals(criterio) || (pas.getNumDocumento()+"").equals(criterio))
-            {
-                listado = listado + "Pasajero #"+(i+1) + "\n" + pas.toString() + "\n";    
-            }
-            i++;
-        }
-        
         return listado;
-        
-        
-        
     }
     
     public String toString()
